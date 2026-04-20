@@ -4,15 +4,14 @@
 
 struct Musica
 {
-    char nome[20];
-    char artis[20];
+    char nome[30];
+    char artis[30];
     float tempo;
 
 };
 
 struct No{
-    char valor;
-    int idade da muisca;
+    struct Musica dado;
     struct No *proximo;
 };
 
@@ -20,23 +19,39 @@ struct Pilha{
     struct No *topo;
 };
 
+
+
 void inicializar(struct Pilha *p){
     p->topo = NULL;
 }
 
-void push(struct Pilha *p){
-    int valor = 0;
-    struct No *novo = malloc(sizeof(struct No));
-    novo->valor = valor;
-    novo->proximo = p->topo;
-    p->topo = novo;
+struct Fila{
+    Struct No *inicio;
+    Struct No *fim;
 }
 
+
+void push(struct Pilha *p, struct Musica m) {
+    struct No *novo = malloc(sizeof(struct No));
+    
+    if (novo) {
+        novo->dado = m;
+        novo->dado.tempo;
+        novo->proximo = p->topo; 
+        p->topo = novo;        
+        printf("música adicionada com sucesso!");
+    } else printf("Erro ao alocar memória!\n");
+}
 
 
 
 int main(){
     int opt;
+
+    struct Pilha p1;
+
+    inicializar(&p1);
+    push()
 
 
     do{
@@ -52,10 +67,14 @@ int main(){
             break;
 
         case 3:
+            push();
+            break;
+            
+        case 4:
             //sair;
             break;
 
-        }
+        } 
 
     }while(opt != 3 || opt == 2);
 
@@ -63,9 +82,7 @@ int main(){
     struct Musica m1;
     strcpy(m1.artis, "\n joao pe de barro");
     strcpy(m1.nome, "\n ai ai meu pe");
-    strcpy(m1.nome, "rapaz - xaropinho");
-    int putsk=9;
-    m1.tempo = 908.67;
+    m1.tempo = 0.59;
 
 
     printf("%s", m1.artis);
