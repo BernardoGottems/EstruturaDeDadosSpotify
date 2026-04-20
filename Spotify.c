@@ -36,40 +36,59 @@ void push(struct Pilha *p){
 
 
 int main(){
+
     int opt;
 
-
     do{
+        printf("----- SPOTIFY -----");
+        printf("1- Adicionar na playlist");
+        printf("2- Tocar próxima");
+        printf("3- Voltar música");
+        printf("4- Sair");
+        printf("-------------------");
         scanf("%d", &opt);
+        // aqui teria o getchar() pra limpar o buffer
 
         switch (opt){
-        case 1:
-            //  proxMusica()
+        case 1: // adicionarMusica
+            printf("Nome da música: ");
+            // e aqui entraria o fgets
+            printf("Artista: ");
+            // fgets
+            // enqueue(...);
             break;
             
-        case 2:
-            // voltMusica   
+        case 2: // proxMusica
+             /*if(dequeue()){
+
+                printf("");
+                push();
+             }
+             else{
+                printf("\nFim da playlist!\n");
+             }*/
+              
             break;
 
-        case 3:
-            //sair;
+        case 3: // voltMusica 
+         
+             
+    
+            break;
+
+        case 4: // sair
+
+            printf("\n...SAINDO\n");
+
+        default:
+            printf("\nOpção inválida!\n");
+        
             break;
 
         }
 
-    }while(opt != 3 || opt == 2);
+    }while(opt != 4);
 
-
-    struct Musica m1;
-    strcpy(m1.artis, "\n joao pe de barro");
-    strcpy(m1.nome, "\n ai ai meu pe");
-    strcpy(m1.nome, "rapaz - xaropinho");
-    int putsk=9;
-    m1.tempo = 908.67;
-
-
-    printf("%s", m1.artis);
-    printf("%s", m1.nome);
-
+    return 0;
 
 }
