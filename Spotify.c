@@ -33,23 +33,29 @@ void iniciaFila(struct Fila *f){
 }
 
 
-void push(struct Pilha *p, struct Musica m) {
+void enqueue(struct Fila *f, struct Musica m) {
     struct No *novo = malloc(sizeof(struct No));
-    
-    if (novo) {
+    if (novo != NULL) {
         novo->dado = m;
-        novo->dado.tempo;
-        novo->proximo = p->topo; 
-        p->topo = novo;        
+        novo->proximo = NULL;
+        if(f->inicio == NULL){
+            f->inicio = novo;
+        }else{
+            f->fim->proximo = novo;
+        }
+        f->fim = novo;
         printf("música adicionada com sucesso!");
     } else printf("Erro ao alocar memória!\n");
 }
 
 
 
+
 int main(){
     struct Pilha historico;
     struct Fila playlist;
+    iniciaPilha(&historico);
+    iniciaFila(&playlist);
 
     int opt;
 
@@ -61,16 +67,16 @@ int main(){
         printf("\n 4- Sair");
         printf("\n -------------------\n");
         scanf("%d", &opt);
-        // aqui teria o getchar() pra limpar o buffer
+        getchar();//getchar para limpar o buffer
 
         switch (opt){
         case 1: // adicionarMusica
-        struct Musica nova_musica;
-        printf("\n Nome da música: ");
-        fgets(nova_musica.nome, sizeof(nova_musica.nome), stdin);
-            
-            // fgets
-            // enqueue(...);
+            struct Musica nova_musica;
+            printf("\n Nome da musica: ");
+            fgets(nova_musica.nome, sizeof(nova_musica.nome), stdin);
+            printf("\n Nome do artista: ");
+            fgets(nova_musica.artis, sizeof(nova_musica.artis), stdin);
+            enqueue(&playlist , nova_musica);
             break;
             
         case 2: // proxMusica
