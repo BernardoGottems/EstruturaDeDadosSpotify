@@ -9,25 +9,27 @@ struct Musica
     float tempo;
 
 };
-
 struct No{
     struct Musica dado;
     struct No *proximo;
 };
-
 struct Pilha{
     struct No *topo;
 };
 
-
-
-void inicializar(struct Pilha *p){
-    p->topo = NULL;
-}
-
 struct Fila{
-    Struct No *inicio;
-    Struct No *fim;
+    struct No *inicio;
+    struct No *fim;
+};
+
+
+void iniciaPilha(struct Pilha *p){
+    p->topo = NULL;
+
+};
+void iniciaFila(struct Fila *f){
+    f->inicio = NULL;
+    f->fim = NULL;
 }
 
 
@@ -46,47 +48,63 @@ void push(struct Pilha *p, struct Musica m) {
 
 
 int main(){
+    struct Pilha historico;
+    struct Fila playlist;
+
     int opt;
 
-    struct Pilha p1;
-
-    inicializar(&p1);
-    push()
-
-
     do{
+        printf("----- SPOTIFY -----");
+        printf("\n 1- Adicionar na playlist");
+        printf("\n 2- Tocar proxima");
+        printf("\n 3- Voltar musica");
+        printf("\n 4- Sair");
+        printf("\n -------------------\n");
         scanf("%d", &opt);
+        // aqui teria o getchar() pra limpar o buffer
 
         switch (opt){
-        case 1:
-            //  proxMusica()
+        case 1: // adicionarMusica
+        struct Musica nova_musica;
+        printf("\n Nome da música: ");
+        fgets(nova_musica.nome, sizeof(nova_musica.nome), stdin);
+            
+            // fgets
+            // enqueue(...);
             break;
             
-        case 2:
-            // voltMusica   
+        case 2: // proxMusica
+             /*if(dequeue()){
+
+                printf("");
+                push();
+             }
+             else{
+                printf("\nFim da playlist!\n");
+             }*/
+              
             break;
 
-        case 3:
-            push();
+        case 3: // voltMusica 
+         
+             
+    
             break;
-            
-        case 4:
-            //sair;
+
+        case 4: // sair
+
+            printf("\n...SAINDO\n");
+            break;
+
+        default:
+            printf("\nOpção inválida!\n");
+        
             break;
 
         } 
 
-    }while(opt != 3 || opt == 2);
+    }while(opt != 4);
 
-
-    struct Musica m1;
-    strcpy(m1.artis, "\n joao pe de barro");
-    strcpy(m1.nome, "\n ai ai meu pe");
-    m1.tempo = 0.59;
-
-
-    printf("%s", m1.artis);
-    printf("%s", m1.nome);
-
+    return 0;
 
 }
