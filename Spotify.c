@@ -12,7 +12,6 @@ struct Musica
 
 struct No{
     char valor;
-    int idade da muisca;
     struct No *proximo;
 };
 
