@@ -6,7 +6,6 @@ struct Musica
 {
     char nome[30];
     char artis[30];
-    float tempo;
 
 };
 struct No{
