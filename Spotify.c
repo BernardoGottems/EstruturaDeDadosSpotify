@@ -113,7 +113,7 @@ int main(){
             nova_musica.nome[strcspn(nova_musica.nome, "\n")] = '\0';
             printf(" Nome do artista: ");
             fgets(nova_musica.artis, sizeof(nova_musica.artis), stdin);
-            nova_musica.nome[strcspn(nova_musica.nome, "\n")] = '\0';
+            nova_musica.artis[strcspn(nova_musica.artis, "\n")] = '\0';
             enqueue(&playlist , nova_musica);
             break;
         case 2: // proxMusica
