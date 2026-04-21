@@ -44,6 +44,17 @@ void push(struct Pilha *p, struct Musica m){
     }
 }
 
+int pop(struct Pilha *p, struct Musica *m) {
+    if (p->topo == NULL) {
+        return 0;
+    }
+    struct No *removido = p->topo;
+    *m = removido->dado;      
+    p->topo = removido->proximo; 
+    free(removido);            
+    return 1;                  
+}
+
 void enqueue(struct Fila *f, struct Musica m) {
     struct No *novo = malloc(sizeof(struct No));
     if (novo != NULL) {
@@ -55,8 +66,8 @@ void enqueue(struct Fila *f, struct Musica m) {
             f->fim->proximo = novo;
         }
         f->fim = novo;
-        printf("música adicionada com sucesso!");
-    } else printf("Erro ao alocar memória!\n");
+        printf("musica adicionada com sucesso!");
+    } else printf("Erro ao alocar memoria!\n");
 }
 
 int dequeue(struct Fila *f, struct Musica *m){
@@ -108,7 +119,7 @@ int main(){
         case 2: // proxMusica
             struct Musica tocando;
              if(dequeue(&playlist, &tocando)){
-                printf("Tocando: %s - %s", tocando.nome, tocando.artis);
+                printf("Tocando: %s - %s", tocando.nome, tocando.artis);               
                 push(&historico, tocando);
              }
              else{
@@ -117,8 +128,14 @@ int main(){
               
             break;
 
-        case 3: // voltMusica 
-         
+        case 3:
+             struct Musica anterior;
+             if (pop(&historico, &anterior)) {
+                    printf("\nVoltando para: %s - %s\n", anterior.nome, anterior.artis);
+                } else {
+                    printf("\nNao ha musicas no historico!\n");
+                }
+            
              
     
             break;
@@ -129,7 +146,7 @@ int main(){
             break;
 
         default:
-            printf("\nOpção inválida!\n");
+            printf("\nOpção invalida!\n");
         
             break;
 
