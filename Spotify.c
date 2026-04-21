@@ -66,7 +66,7 @@ void enqueue(struct Fila *f, struct Musica m) {
             f->fim->proximo = novo;
         }
         f->fim = novo;
-        printf("musica adicionada com sucesso!");
+        printf("\n Musica adicionada com sucesso! \n \n");
     } else printf("Erro ao alocar memoria!\n");
 }
 
@@ -102,7 +102,7 @@ int main(){
         printf("\n 2- Tocar proxima");
         printf("\n 3- Voltar musica");
         printf("\n 4- Sair");
-        printf("\n -------------------\n");
+        printf("\n -------------------\n Escolha: ");
         scanf("%d", &opt);
         getchar();//getchar para limpar o buffer
 
@@ -111,11 +111,12 @@ int main(){
             struct Musica nova_musica;
             printf("\n Nome da musica: ");
             fgets(nova_musica.nome, sizeof(nova_musica.nome), stdin);
-            printf("\n Nome do artista: ");
+            nova_musica.nome[strcspn(nova_musica.nome, "\n")] = '\0';
+            printf(" Nome do artista: ");
             fgets(nova_musica.artis, sizeof(nova_musica.artis), stdin);
+            nova_musica.nome[strcspn(nova_musica.nome, "\n")] = '\0';
             enqueue(&playlist , nova_musica);
             break;
-            
         case 2: // proxMusica
             struct Musica tocando;
              if(dequeue(&playlist, &tocando)){
