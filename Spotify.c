@@ -30,8 +30,19 @@ void iniciaPilha(struct Pilha *p){
 void iniciaFila(struct Fila *f){
     f->inicio = NULL;
     f->fim = NULL;
-}
+};
 
+void push(struct Pilha *p, struct Musica m){
+    struct No *novo = malloc(sizeof(struct No));
+
+    if(novo != NULL){
+        novo->dado = m;
+        novo->proximo = p->topo;
+        p->topo = novo;
+    }else{
+        printf("Erro ao alocar memória!\n");
+    }
+}
 
 void enqueue(struct Fila *f, struct Musica m) {
     struct No *novo = malloc(sizeof(struct No));
@@ -48,6 +59,21 @@ void enqueue(struct Fila *f, struct Musica m) {
     } else printf("Erro ao alocar memória!\n");
 }
 
+int dequeue(struct Fila *f, struct Musica *m){
+    if(f->inicio == NULL){
+        return 0;
+    }
+
+    struct No *removido = f->inicio;
+    *m = removido->dado;
+    f->inicio = removido->proximo;
+    if(f->inicio == NULL){
+        f->fim = NULL;
+    }
+    free(removido);
+    return 1;
+}
+
 
 
 
@@ -60,7 +86,7 @@ int main(){
     int opt;
 
     do{
-        printf("----- SPOTIFY -----");
+        printf("\n----- SPOTIFY -----");
         printf("\n 1- Adicionar na playlist");
         printf("\n 2- Tocar proxima");
         printf("\n 3- Voltar musica");
@@ -80,14 +106,14 @@ int main(){
             break;
             
         case 2: // proxMusica
-             /*if(dequeue()){
-
-                printf("");
-                push();
+            struct Musica tocando;
+             if(dequeue(&playlist, &tocando)){
+                printf("Tocando: %s - %s", tocando.nome, tocando.artis);
+                push(&historico, tocando);
              }
              else{
                 printf("\nFim da playlist!\n");
-             }*/
+             }
               
             break;
 
