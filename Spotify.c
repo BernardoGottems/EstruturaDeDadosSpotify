@@ -119,7 +119,7 @@ int main(){
         case 2: // proxMusica
             struct Musica tocando;
              if(dequeue(&playlist, &tocando)){
-                printf("Tocando: %s - %s", tocando.nome, tocando.artis);               
+                printf("\n \n  Tocando: %s - %s", tocando.nome, tocando.artis);               
                 push(&historico, tocando);
              }
              else{
