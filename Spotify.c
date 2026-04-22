@@ -5,7 +5,7 @@
 struct Musica
 {
     char nome[30];
-    char artista[30];
+    char artis[30];
 
 };
 struct No{
@@ -112,14 +112,14 @@ int main(){
             fgets(nova_musica.nome, sizeof(nova_musica.nome), stdin);
             nova_musica.nome[strcspn(nova_musica.nome, "\n")] = '\0';
             printf(" Nome do artista: ");
-            fgets(nova_musica.artista, sizeof(nova_musica.artista), stdin);
-            nova_musica.artista[strcspn(nova_musica.artista, "\n")] = '\0';
+            fgets(nova_musica.artis, sizeof(nova_musica.artis), stdin);
+            nova_musica.artis[strcspn(nova_musica.artis, "\n")] = '\0';
             enqueue(&playlist , nova_musica);
             break;
         case 2: // proxMusica
             struct Musica tocando;
              if(dequeue(&playlist, &tocando)){
-                printf("\n \n  Tocando: %s - %s", tocando.nome, tocando.artista);               
+                printf("\n \n  Tocando: %s - %s", tocando.nome, tocando.artis);               
                 push(&historico, tocando);
              }
              else{
@@ -131,7 +131,7 @@ int main(){
         case 3:
              struct Musica anterior;
              if (pop(&historico, &anterior)) {
-                    printf("\nVoltando para: %s - %s\n", anterior.nome, anterior.artista);
+                    printf("\nVoltando para: %s - %s\n", anterior.nome, anterior.artis);
                 } else {
                     printf("\nNao ha musicas no historico! \n");
                 }
