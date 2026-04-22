@@ -133,7 +133,7 @@ int main(){
              if (pop(&historico, &anterior)) {
                     printf("\nVoltando para: %s - %s\n", anterior.nome, anterior.artis);
                 } else {
-                    printf("\nNao ha musicas no historico!\n");
+                    printf("\nNao ha musicas no historico! \n");
                 }
             
              
@@ -142,11 +142,11 @@ int main(){
 
         case 4: // sair
 
-            printf("\n...SAINDO\n");
+            printf("\n...SAINDO \n");
             break;
 
         default:
-            printf("\nOpção invalida!\n");
+            printf("\nOpção invalida! \n");
         
             break;
 
